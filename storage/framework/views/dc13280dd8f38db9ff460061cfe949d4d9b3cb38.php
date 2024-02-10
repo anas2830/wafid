@@ -78,54 +78,16 @@
               <p>Dashboard</p>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="<?php echo e(url('/user-list')); ?>" class="nav-link <?php if($activeMenu == "user-list"): ?> active <?php endif; ?>">
-              <i class="nav-icon fas fa-th"></i>
-              <p>User List</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link <?php if($activeMenu == "header-seetings" || $activeMenu == "services" || $activeMenu == "easy-steps" || $activeMenu == "offers"): ?> active <?php endif; ?>">
-              <i class="nav-icon fas fa-chart-pie"></i>
-              <p>
-                Website
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="<?php echo e(url('/header-seetings')); ?>" class='nav-link <?php if($activeMenu == "header-seetings"): ?> active <?php endif; ?>'>
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Header/Footer Seetings</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="<?php echo e(url('/about-us')); ?>" class='nav-link <?php if($activeMenu == "about-us"): ?> active <?php endif; ?>'>
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>About-Us</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="<?php echo e(url('/services')); ?>" class='nav-link <?php if($activeMenu == "services"): ?> active <?php endif; ?>'>
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Services</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="<?php echo e(url('/easy-steps')); ?>" class='nav-link <?php if($activeMenu == "easy-steps"): ?> active <?php endif; ?>'>
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Easy Steps</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="<?php echo e(url('/offers')); ?>" class='nav-link <?php if($activeMenu == "offers"): ?> active <?php endif; ?>'>
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Offers</p>
-                </a>
-              </li>
 
-            </ul>
-          </li>
+          <?php if(Auth::guard('admin')->check()): ?>
+              <li class="nav-item">
+                <a href="<?php echo e(url('/handleModerator')); ?>" class='nav-link <?php if($activeMenu == "moderator"): ?> active <?php endif; ?>'>
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Moderator</p>
+                </a>
+              </li>
+          <?php endif; ?> 
+
           
           <li class="nav-item">
             <a class='nav-link <?php if($activeMenu == "profile"): ?> active <?php endif; ?>' href="<?php if(Auth::guard('admin')->check()): ?> <?php echo e(url('adminProfile')); ?> <?php endif; ?>">
@@ -133,10 +95,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class='nav-link' href="<?php echo e(route('logout')); ?>"
-                onclick="event.preventDefault();
-                              document.getElementById('logout-form').submit();">
-
+            <a class='nav-link' href="<?php echo e(route('logout')); ?>" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                 <i class="far fa-circle nav-icon"></i> <p>Logout</p>
             </a>
             <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" style="display: none;">

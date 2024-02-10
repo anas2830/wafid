@@ -11,7 +11,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Offers List</h1>
+                    <h1 class="m-0">Moderator List</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -53,32 +53,35 @@
                     @endforeach
                 @endif
 
-                {{-- <div class="data-list text-right">
-                  <button type="button" class="btn btn-info btn-xs open-modal" modal-title="Create Offer" modal-type="create" modal-size="medium" modal-class="" selector="Offer" modal-link="{{url('offers/create')}}" style="margin-bottom:2%; padding:5px"> Add New Offer </button>
-                </div> --}}
+                <div class="data-list text-right">
+                  <button type="button" class="btn btn-info btn-xs open-modal" modal-title="Create Moderator" modal-type="create" modal-size="medium" modal-class="" selector="Moderator" modal-link="{{url('handleModerator/create')}}" style="margin-bottom:2%; padding:5px"> Add New Moderator </button>
+                </div>
 
-                <table class="table table-bordered table-hover datatable-highlight data-list" id="offersTable">
+                <table class="table table-bordered table-hover datatable-highlight data-list" id="blogTable">
                     <thead>
                         <tr>
                             <th width="5%">SL.</th>
                             <th width="20%">Name</th>
-                            <th width="60%">Short Description</th>
+                            <th width="20%">Email</th>
+                            <th width="20%">Thumb</th>
+                            <th width="10%">Status</th>
                             <th width="10%" class="text-center">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
 
-                        @if (count($all_offers) > 0)
-                            @foreach ($all_offers as $key => $offer)
+                        @if (count($allModerator) > 0)
+                            @foreach ($allModerator as $key => $moderator)
                             <tr>
                                 <td>{{++$key}}</td>
-                                <td>{{ $offer->name }}</td>
-                                <td>{!! $offer->short_desc !!}</td>
-
+                                <td>{{ $moderator->name }}</td>
+                                <td>{{ $moderator->email }}</td>
+                                <td><img src="{{ asset('uploads/moderatorProfile/thumb/'.$moderator->photo_name)}}" alt=""></td>
+                                <td class="text-center">Active</td>
                                 <td class="text-center">
-                                    <a href="#" class="open-modal action-icon" modal-title="Update Offer" modal-type="update" modal-size="medium" modal-class="" selector="OfferUpdate" modal-link="{{url('offers/'.$offer->id.'/edit')}}"><i class="icon-pencil"></i></a>
+                                    <a href="#" class="open-modal action-icon" modal-title="Update Moderator" modal-type="update" modal-size="medium" modal-class="" selector="ModeratorUpdate" modal-link="{{url('handleModerator/'.$moderator->id.'/edit')}}"><i class="icon-pencil"></i></a>
                                     
-                                    {{-- <a href="#" class="action-icon"><i class="icon-trash" id="delete" delete-link="{{url('offers', [$offer->id])}}">@csrf </i></a> --}}
+                                    <a href="#" class="action-icon"><i class="icon-trash" id="delete" delete-link="{{url('handleModerator', [$moderator->id])}}">@csrf </i></a>
                                 </td>
                             </tr> 
                             @endforeach
@@ -106,7 +109,7 @@
 
     <script type="text/javascript">
       $(document).ready( function () {
-        $('#offersTable').DataTable();
+        $('#blogTable').DataTable();
       });
     </script>
   @endpush

@@ -1,33 +1,18 @@
-<?php $header_footer_seetings = DB::table('header_footer_content')->where('id', 1)->first(); ?>
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title><?php echo e(@$header_footer_seetings->site_title); ?></title>
-    <link rel="icon" type="image/png" sizes="32x32" href="<?php echo e(asset('uploads/bg/'.@$header_footer_seetings->fav_icon)); ?>">
+    <title>Wafid</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="<?php echo e(asset('uploads/bg/Al-wafid.webp')); ?>">
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="<?php echo e(asset('website')); ?>/js/jquery-3.3.1.min.js"></script>
     <link rel="stylesheet" href="<?php echo e(asset('website')); ?>/fonts/icomoon/style.css">
     <link rel="stylesheet" href="<?php echo e(asset('website')); ?>/css/bootstrap.min.css">
-    
-    
-    
-    
-    
-    
-    
+    <link rel="stylesheet" href="<?php echo e(asset('website')); ?>/css/magnific-popup.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
     <link rel="stylesheet" href="<?php echo e(asset('website')); ?>/css/style.css">
-    <link rel="stylesheet" href="<?php echo e(asset('website')); ?>/css/sweet-alert.css">
-
-    
-    
-
-    <script type="text/javascript" src="<?php echo e(asset('website')); ?>/js/floating-wpp.min.js"></script>
-    <link rel="stylesheet" href="<?php echo e(asset('website')); ?>/css/floating-wpp.min.css">
-
     
   </head>
   <body>
@@ -40,18 +25,18 @@
             <div class="col-md-6 col-sm-8 col-12 d-flex align-items-center justify-content-sm-start justify-content-center mb-sm-0 mb-2">
               <div class="headerTopLeft">
                 <ul class="d-flex">
-                  <li><a href="mailto:<?php echo e(@$header_footer_seetings->email); ?>"><?php echo e(@$header_footer_seetings->email); ?></a></li>
-                  <li><a href="tel:<?php echo e(@$header_footer_seetings->email); ?>"><?php echo e(@$header_footer_seetings->phone); ?></a></li>
+                  <li><a href="mailto:contact-us@al-wafid.com">contact-us@al-wafid.com</a></li>
+                  <li><a href="tel:+966564082349">+966564082349</a></li>
                 </ul>
               </div>
             </div>
             <div class="col-md-6 col-sm-4 col-12 d-flex  justify-content-sm-end justify-content-center">
               <div class="headerTopRight">
                   <ul>
-                    <li><a href="<?php echo e(@$header_footer_seetings->facebook); ?>"><i class="icon-facebook"></i></a></li>
-                    <li><a href="<?php echo e(@$header_footer_seetings->twitter); ?>"><i class="icon-twitter"></i></a></li>
-                    <li><a href="<?php echo e(@$header_footer_seetings->instagram); ?>"><i class="icon-instagram"></i></a></li>
-                    <li><a href="<?php echo e(@$header_footer_seetings->linkedin); ?>"><i class="icon-linkedin"></i></a></li>
+                    <li><a href="#"><i class="icon-facebook"></i></a></li>
+                    <li><a href="#"><i class="icon-twitter"></i></a></li>
+                    <li><a href="#"><i class="icon-instagram"></i></a></li>
+                    <li><a href="#"><i class="icon-linkedin"></i></a></li>
                   </ul>
               </div>
             </div>
@@ -71,17 +56,20 @@
         <div class="container">
           <div class="row align-items-center">
             <div class="col-4 site-logo">
-              <a href="<?php echo e(url('/')); ?>" class="text-black h2 mb-0"><img class="img-fluid" src="<?php echo e(asset('uploads/bg/'.$header_footer_seetings->site_logo)); ?>" class="" alt=""></a>
+              <a href="<?php echo e(url('/')); ?>" class="text-black h2 mb-0"><img class="img-fluid" src="<?php echo e(asset('uploads/bg/0_1681888300.png')); ?>" class="" alt=""></a>
             </div>
 
             <div class="col-8 text-right">
               <nav class="site-navigation" role="navigation">
                 <ul class="site-menu js-clone-nav mr-auto d-none d-lg-block mb-0">
                   <li><a href="<?php echo e(url('/')); ?>">Home</a></li>
-                  <li><a href="<?php echo e(route('processing-candidate')); ?>">Processing</a></li>
-                  <li><a href="<?php echo e(route('successfull-candidate')); ?>">Successful Candidates</a></li>
-                  <!-- Authentication Links -->
-                  <?php if(auth()->guard()->guest()): ?>
+                  <li><a href="<?php echo e(url('/about')); ?>">About Us</a></li>
+                  <li><a href="<?php echo e(url('/faq')); ?>">FAQ</a></li>
+                  <li><a href="<?php echo e(url('/contact')); ?>">Contact Us</a></li>
+                  <li><a href="<?php echo e(url('/privacy')); ?>">Privacy</a></li>
+                  <li><a href="<?php echo e(url('/terms')); ?>">Terms & Condition</a></li>
+                  <li class="logRebtn"><a  href="<?php echo e(url('/admin')); ?>">Login</a></li>
+                  <!-- <?php if(auth()->guard()->guest()): ?>
                       <li class="logRebtn"><a  href="<?php echo e(url('/login')); ?>">Login</a></li>
                       <li class="logRebtn"><a href="<?php echo e(route('register')); ?>">Registration</a></li>
                   <?php else: ?>
@@ -106,7 +94,7 @@
                               <?php endif; ?>
                           </div>
                       </li>
-                  <?php endif; ?>
+                  <?php endif; ?> -->
             
                 </ul>
               </nav>
@@ -126,10 +114,10 @@
                         <div class="col-md-4 col-sm-6 mb-50">
                             <div class="footer-widget">
                                 <div class="footer-logo mb-2">
-                                    <a href="<?php echo e(url('/')); ?>" class="text-black h2"><img class="img-fluid" src="<?php echo e(asset('uploads/bg/'.$header_footer_seetings->site_logo)); ?>" class="" alt=""></a>
+                                    <a href="<?php echo e(url('/')); ?>" class="text-black h2"><img class="img-fluid" src="<?php echo e(asset('uploads/bg/0_1681888300.png')); ?>" class="" alt=""></a>
                                 </div>
                                 <div class="footer-text">
-                                    <p><?php echo @$header_footer_seetings->footer_left_short_text; ?></p>
+                                    <p>We are a job service provider company. When we get a job post offer then justify it’s validity then published it. aa</p>
                                 </div>
                             </div>
                         </div>
@@ -139,10 +127,10 @@
                                     <h3>Quick Links</h3>
                                 </div>
                                 <ul>
-                                    <li><a href="<?php echo e(route('processing-candidate')); ?>">Processing</a></li>
-                                    <li><a href="<?php echo e(route('successfull-candidate')); ?>">Successful Candidates</a></li>
                                     <li><a href="<?php echo e(url('/login')); ?>">Login</a></li>
-                                    <li><a href="<?php echo e(route('register')); ?>">Registration</a></li>
+                                    <li><a href="<?php echo e(url('/about')); ?>">About Us</a></li>
+                                    <li><a href="<?php echo e(url('/terms')); ?>">Terms & Condition</a></li>
+                                    <li><a href="<?php echo e(url('/privacy')); ?>">Privacy</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -152,16 +140,16 @@
                                         <h3>Find us</h3>
                                     </div>
                                     <div class="footer-text">
-                                      <p><?php echo @$header_footer_seetings->address; ?></p>
+                                      <p>Mousa Bin Nusair Street at Olaya in Riyadh, Saudi Arabia.</p>
                                     </div>
                                     <!-- <span>Follow us</span> -->
                                     <div class="footer-widget-heading">
                                         <h3>Follow us</h3>
                                     </div>
                                     <ul class="social_icon">
-                                      <li><a href="<?php echo e(@$header_footer_seetings->facebook); ?>"><i class="fa-brands fa-facebook-f"></i></a></li>
-                                      <li><a href="<?php echo e(@$header_footer_seetings->twitter); ?>"><i class="fa-brands fa-twitter"></i></a></li>
-                                      <li><a href="<?php echo e(@$header_footer_seetings->instagram); ?>"><i class="fa-brands fa-instagram"></i></a></li>
+                                      <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
+                                      <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
+                                      <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
                                   </ul>
                                 </div>
                         </div>
@@ -171,12 +159,11 @@
             <div class="copyright-area">
                 <div class="container">
                     <div class="row" style="justify-content: center;">
-                        
+                        <div class="col-xl-6 col-lg-6 text-center text-center">
                             <div class="copyright-text">
                                 <p>Copyright &copy; 2023 wafid, All Right Reserved <a href="#"></a></p>
                             </div>
-                        
-                        
+                        </div>
                     </div>
                 </div>
             </div>
@@ -196,19 +183,7 @@
     <script src="<?php echo e(asset('website')); ?>/js/aos.js"></script>
     <script src="<?php echo e(asset('website')); ?>/js/main.js"></script>
 
-    <script>
-      $('.floating-wpp').floatingWhatsApp({
-        phone: '+966564082349',
-        popupMessage: 'Hello, how can we help you?',
-        showPopup: true,
-        showOnIE: false,
-        headerTitle: 'Welcome!',
-        headerColor: '#16a549bf',
-        backgroundColor: '#16a549bf',
-        buttonImage: '<img src="<?php echo e(asset("uploads/bg/whatsapp-logo.png")); ?>" />',
-        position: 'right'
-      });
-    </script>
+
 
   <!-- Per Page JS files -->
   <?php echo $__env->yieldPushContent('javascript'); ?>

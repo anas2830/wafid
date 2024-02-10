@@ -1,4 +1,5 @@
 <?php
+
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\IndexController;
 
@@ -10,11 +11,22 @@ Route::post('reset-password', [ForgotPasswordController::class, 'ResetPasswordSt
 
 
 Route::get('/', 'IndexController@index');
-Route::get('processing-candidate', [IndexController::class, 'processingCandidate'])->name('processing-candidate');
-Route::get('successfull-candidate', [IndexController::class, 'successfullCandidate'])->name('successfull-candidate');
-Route::get('/about', function(){
+Route::get('/about', function () {
     return view('website.about');
 });
+Route::get('/faq', function () {
+    return view('website.faq');
+});
+Route::get('/contact', function () {
+    return view('website.contact');
+});
+Route::get('/privacy', function () {
+    return view('website.privacy');
+});
+Route::get('/terms', function () {
+    return view('website.terms');
+});
+
 
 Route::get('/register', 'Auth\RegisterController@create')->name('register');
 Route::post('/sign-up', 'Auth\RegisterController@signUp')->name('sign-up');
@@ -24,12 +36,12 @@ Auth::routes([
 ]);
 
 Route::get('/home', 'IndexController@index')->name('home');
-Route::group(['middleware' => ['auth']], function() {
+Route::group(['middleware' => ['auth']], function () {
     Route::get('/email/verify', 'VerificationController@show')->name('verification.notice');
     Route::get('/email/verify/{id}/{hash}', 'VerificationController@verify')->name('verification.verify')->middleware(['signed']);
     Route::post('/email/resend', 'VerificationController@resend')->name('verification.resend');
 
-    Route::group(['middleware' => ['verified']], function() {
+    Route::group(['middleware' => ['verified']], function () {
         Route::get('/user-dashboard', 'HomeController@dashboard')->name('user-dashboard');
         Route::post('/user-dashboard', 'HomeController@dashboardUpdate')->name('user-dashboard');
 
@@ -38,6 +50,17 @@ Route::group(['middleware' => ['auth']], function() {
     });
 });
 
+Route::get('/login/moderator', 'ModeratorLoginController@showModeratorLoginForm');
+Route::post('/login/moderator', 'ModeratorLoginController@moderatorLogin');
+
+Route::group(['middleware' => 'auth:moderator'], function () {
+    //Route::view('/moderator', 'moderator');
+    Route::get('/moderator', 'SuperAdmin\HomeController@index')->name('moderator');
+    Route::get('/moderatorDashboard', 'SuperAdmin\HomeController@index')->name('dashboard');
+
+    Route::get('/moderatorProfile', 'SuperAdmin\HomeController@adminProfile')->name('moderatorProfile');
+    Route::post('/moderatorProfileUpdate', 'SuperAdmin\HomeController@adminProfileUpdate')->name('moderatorProfileUpdate');
+});
 
 
 Route::get('/login/admin', 'AdminLoginController@showAdminLoginForm');
@@ -48,18 +71,11 @@ Route::group(['middleware' => 'auth:admin'], function () {
     Route::get('/admin', 'SuperAdmin\HomeController@index')->name('admin');
     Route::get('/dashboard', 'SuperAdmin\HomeController@index')->name('dashboard');
 
-    Route::get('/user-list', 'SuperAdmin\HomeController@userList')->name('user-list');
-    Route::delete('/delete-user/{id}', 'SuperAdmin\HomeController@deleteUser')->name('delete-user');
-    Route::get('/user-document/{id}', 'SuperAdmin\HomeController@userDocument')->name('user-document');
+    //handle moderator 
+    Route::resource('handleModerator', 'SuperAdmin\ModeratorController');
 
-    //website
-    Route::get('/header-seetings', 'SuperAdmin\WebsiteController@headerSeetings')->name('header-seetings');
-    Route::post('/header-seetings', 'SuperAdmin\WebsiteController@headerSeetingsSave')->name('header-seetings');
-    Route::get('/about-us', 'SuperAdmin\WebsiteController@aboutUs')->name('about-us');
-    Route::post('/about-us', 'SuperAdmin\WebsiteController@aboutUsSave')->name('about-us');
-    Route::resource('offers', 'SuperAdmin\OffersController');
-    Route::resource('services', 'SuperAdmin\ServiceController');
-    Route::resource('easy-steps', 'SuperAdmin\EasyStepsController');
+    // Route::get('/user-list', 'SuperAdmin\HomeController@userList')->name('user-list');
+    // Route::delete('/delete-user/{id}', 'SuperAdmin\HomeController@deleteUser')->name('delete-user');
 
     //handle profile
     Route::get('/adminProfile', 'SuperAdmin\HomeController@adminProfile')->name('adminProfile');

@@ -46,9 +46,9 @@
                     <!-- small box -->
                     <div class="small-box bg-warning">
                         <div class="inner">
-                            <h3>{{ $processing_user }}</h3>
+                            <h3>5</h3>
 
-                            <p>Processing Candidates</p>
+                            <p>Custom Label</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-person-add"></i>
@@ -60,9 +60,9 @@
                     <!-- small box -->
                     <div class="small-box bg-success">
                         <div class="inner">
-                            <h3>{{ $complete_user }}</h3>
+                            <h3>20</h3>
 
-                            <p>Successful Candidates</p>
+                            <p>Custom Label</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-person-add"></i>

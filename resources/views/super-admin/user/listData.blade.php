@@ -57,7 +57,7 @@
                   <button type="button" class="btn btn-info btn-xs open-modal" modal-title="Create Offer" modal-type="create" modal-size="medium" modal-class="" selector="Offer" modal-link="{{url('offers/create')}}" style="margin-bottom:2%; padding:5px"> Add New Offer </button>
                 </div> --}}
 
-                <table class="table table-bordered table-hover datatable-highlight data-list" id="offersTable">
+                <table class="table table-bordered table-hover datatable-highlight data-list" id="usersTable">
                     <thead>
                         <tr>
                             <th width="5%">SL.</th>
@@ -93,9 +93,6 @@
                                     @endif 
                                 </td>
                                 <td>
-                                  <a href="#" class="open-modal action-icon" modal-title="Show Document" modal-type="show" modal-size="large" modal-class="" selector="userDocument" modal-link="{{url('user-document/'.$user->id)}} ">
-                                    Documents | 
-                                  </a>
                                   <a href="#" class="action-icon"><i class="icon-trash" id="delete" delete-link="{{url('delete-user', [$user->id])}}">@csrf </i></a>
                                 </td>
                             </tr> 
@@ -124,7 +121,7 @@
 
     <script type="text/javascript">
       $(document).ready( function () {
-        $('#offersTable').DataTable();
+        $('#usersTable').DataTable();
       });
     </script>
   @endpush

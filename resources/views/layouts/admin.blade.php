@@ -78,65 +78,29 @@
               <p>Dashboard</p>
             </a>
           </li>
-          <li class="nav-item">
+
+          @if(Auth::guard('admin')->check())
+              <li class="nav-item">
+                <a href="{{ url('/handleModerator') }}" class='nav-link @if($activeMenu == "moderator") active @endif'>
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Moderator</p>
+                </a>
+              </li>
+          @endif 
+
+          {{-- <li class="nav-item">
             <a href="{{ url('/user-list') }}" class="nav-link @if($activeMenu == "user-list") active @endif">
               <i class="nav-icon fas fa-th"></i>
               <p>User List</p>
             </a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link @if($activeMenu == "header-seetings" || $activeMenu == "services" || $activeMenu == "easy-steps" || $activeMenu == "offers") active @endif">
-              <i class="nav-icon fas fa-chart-pie"></i>
-              <p>
-                Website
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{ url('/header-seetings') }}" class='nav-link @if($activeMenu == "header-seetings") active @endif'>
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Header/Footer Seetings</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{ url('/about-us') }}" class='nav-link @if($activeMenu == "about-us") active @endif'>
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>About-Us</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{ url('/services') }}" class='nav-link @if($activeMenu == "services") active @endif'>
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Services</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{ url('/easy-steps') }}" class='nav-link @if($activeMenu == "easy-steps") active @endif'>
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Easy Steps</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{ url('/offers') }}" class='nav-link @if($activeMenu == "offers") active @endif'>
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Offers</p>
-                </a>
-              </li>
-
-            </ul>
-          </li>
-          
+          </li> --}}
           <li class="nav-item">
             <a class='nav-link @if($activeMenu == "profile") active @endif' href="@if(Auth::guard('admin')->check()) {{ url('adminProfile') }} @endif">
                 <i class="far fa-circle nav-icon"></i> <p>Profile</p>
             </a>
           </li>
           <li class="nav-item">
-            <a class='nav-link' href="{{ route('logout') }}"
-                onclick="event.preventDefault();
-                              document.getElementById('logout-form').submit();">
-
+            <a class='nav-link' href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                 <i class="far fa-circle nav-icon"></i> <p>Logout</p>
             </a>
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
